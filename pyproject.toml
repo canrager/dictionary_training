@@ -1,0 +1,23 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+
+[project]
+name = "dictionary_training"
+version = "0.1.0"
+dependencies = [
+    "datasets>=2.18.0",
+    "einops>=0.7.0",
+    "matplotlib>=3.8.3",
+    "nnsight>=0.2.11",
+    "pandas>=2.2.1",
+    "plotly>=5.18.0",
+    "torch>=2.1.2",
+    "tqdm>=4.66.1",
+    "umap-learn>=0.5.6",
+    "zstandard>=0.22.0",
+    "wandb>=0.17.5"
+]
