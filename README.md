@@ -1,2 +1,2 @@
 # dictionary_training
-Light-weight training code for saprmarks/dictionary_learning library
+Light-weight code training SAEs using the `saprmarks/dictionary_learning` library.
