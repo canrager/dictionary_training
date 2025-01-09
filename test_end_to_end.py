@@ -10,7 +10,7 @@ from dictionary_learning.trainers.top_k import TopKTrainer, TopKAutoEncoder
 from dictionary_learning.utils import hf_dataset_to_generator, get_nested_folders, load_dictionary
 from dictionary_learning.buffer import ActivationBuffer
 from dictionary_learning.dictionary import (
-    AutoEncoderTowardsMonosemanticity,
+    TowardsMonosemanticityAutoEncoder,
 )
 from dictionary_learning.evaluation import evaluate
 
@@ -29,7 +29,21 @@ EXPECTED_RESULTS = {
         "frac_recovered": 0.948982036113739,
         "frac_alive": 0.99951171875,
     },
-    "AutoEncoderTowardsMonosemanticity": {
+    "TowardsMonosemanticityAutoEncoder": {
+        "l2_loss": 6.822444677352905,
+        "l1_loss": 19.382131576538086,
+        "l0": 37.45087890625,
+        "frac_variance_explained": 0.8993501663208008,
+        "cossim": 0.8791120409965515,
+        "l2_ratio": 0.74552041888237,
+        "relative_reconstruction_bias": 0.9595054805278778,
+        "loss_original": 3.3361297130584715,
+        "loss_reconstructed": 5.208198881149292,
+        "loss_zero": 13.251659297943116,
+        "frac_recovered": 0.8106247961521149,
+        "frac_alive": 0.99658203125,
+    },
+    "TowardsMonosemanticityAutoEncoder": {
         "l2_loss": 6.822444677352905,
         "l1_loss": 19.382131576538086,
         "l0": 37.45087890625,
@@ -142,7 +156,7 @@ def test_sae_training():
         [
             {
                 "trainer": ReLUTrainer,
-                "dict_class": AutoEncoderTowardsMonosemanticity,
+                "dict_class": TowardsMonosemanticityAutoEncoder,
                 "activation_dim": activation_dim,
                 "dict_size": expansion_factor * activation_dim,
                 "lr": learning_rate,
