@@ -7,8 +7,8 @@ import os
 from datetime import datetime
 
 from dictionary_learning.training import trainSAE
-from dictionary_learning.trainers.standard import StandardTrainer
-from dictionary_learning.trainers.top_k import TrainerTopK, AutoEncoderTopK
+from dictionary_learning.trainers.relu import ReLUTrainer
+from dictionary_learning.trainers.top_k import TrainerTopK, TopKAutoEncoder
 from dictionary_learning.utils import hf_dataset_to_generator
 from dictionary_learning.buffer import ActivationBuffer
 from dictionary_learning.dictionary import AutoEncoder
@@ -122,7 +122,7 @@ def run_sae_training(
             random_seeds, sparsity_penalties, dict_sizes, learning_rates
         ):
             trainer_configs.append({
-                "trainer": StandardTrainer,
+                "trainer": ReLUTrainer,
                 "dict_class": AutoEncoder,
                 "activation_dim": activation_dim,
                 "dict_size": dict_size,
@@ -131,7 +131,7 @@ def run_sae_training(
                 "warmup_steps": warmup_steps,
                 "resample_steps": resample_steps,
                 "seed": seed,
-                "wandb_name": f"StandardTrainer-{model_name}-{submodule_name}",
+                "wandb_name": f"ReLUTrainer-{model_name}-{submodule_name}",
                 "layer": layer,
                 "lm_name": model_name,
                 "device": device,
@@ -144,7 +144,7 @@ def run_sae_training(
         ):
             trainer_configs.append({
                 "trainer": TrainerTopK,
-                "dict_class": AutoEncoderTopK,
+                "dict_class": TopKAutoEncoder,
                 "activation_dim": activation_dim,
                 "dict_size": dict_size,
                 "k": k,

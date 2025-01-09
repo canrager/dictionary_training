@@ -19,5 +19,6 @@ dependencies = [
     "tqdm>=4.66.1",
     "umap-learn>=0.5.6",
     "zstandard>=0.22.0",
-    "wandb>=0.17.5"
+    "wandb>=0.17.5",
+    "typing_extensions"
 ]
